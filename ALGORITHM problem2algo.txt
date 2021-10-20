@@ -1,0 +1,34 @@
+ALGORITHM problem2
+VAR
+    n,m:INTEGER
+    i,j,k:INTEGER
+    set1 k:INTEGER
+    set2 k:INTEGER
+    set : ARRAY_of INTEGER [n+m]
+    sum_commun : INTEGER:=0
+    sum_diff : INTEGER:=0
+    check :BOOLEAN
+BEGIN
+   read (n)
+   for i from 0 TO n-1 DO
+    read (set1[i])
+END_FOR
+read (m)
+FOR j FROM 0 TO m-1 DO
+read(set2 [j])
+END_FOR
+set = concat (set1,set2)
+FOR k FROM 0 TO set.length-1 DO
+check = false
+FOR l FROM 0 TO set.length-1 DO
+IF (set[k]=set2[l]) THEN
+check = true
+    sum_commun = sum_commun + set [k]
+END_IF
+END_FOR
+IF (check = false ) THEN
+sum_diff = sum_diff + set[k]
+END_FOR
+write ('sum of all distinct elements :', sum_diff)
+write ('sum of all distinct elements :', sum_commun)
+END
