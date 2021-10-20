@@ -1,0 +1,26 @@
+ALGORITHM problem2htab
+VAR
+   set1 : array_of integer[12, 13, 6, 10]
+   set2 : array_of integer[13, 10, 16, 15]
+   set : ARRAY_OF_integer[n] 
+   HTAB : HASH_TABLE<INTEGER,INTEGER>
+BEGIN
+    set := set1.concat (set2)
+    FOR i FROM 0 TO set.length-1 DO
+    IF (HTAB.lookup(set[i]) = false) THEN
+    HTAB.insert (set[i],1)
+    ELSE 
+    HTAB.insert (set[i],HTAB.get(set[i]) + 1)
+    END_IF
+    END_for
+    FOR item IN HTAB DO
+    IF (HTAB.get(item) > 1 ) THEN
+    sum_commun = sum_commun + (item * HTAB.get(item))
+    END_IF
+    IF (HTAB.get(item)= 1) THEN
+    sum_diff=sum_diff +item
+    END_IF
+    END_FOR
+write ('sum of all distinct elements :', sum_diff)
+write ('sum of all distinct elements :', sum_commun)
+END
